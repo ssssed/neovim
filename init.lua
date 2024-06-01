@@ -5,4 +5,10 @@ require('core.theme')
 require('core.configs')
 
 -- Plugins
-require('plugins.nvim-tree')
+require('plugins.neo-tree')
+require('plugins.telescope')
+require('plugins.toggle-term')
+require('plugins.treesiter')
+require('plugins.lsp')
+require('plugins.cmp')
+require('plugins.mini')

@@ -25,15 +25,76 @@ require("lazy").setup({
     },
 
 		-- fs Navigation
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+            "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+        }
+    },
+
+		-- telescope
 		{
-			"nvim-tree/nvim-tree.lua",
-			version = "*",
-			lazy = false,
-			dependencies = {
-				"nvim-tree/nvim-web-devicons",
+			'nvim-telescope/telescope.nvim', tag = '0.1.6',
+			dependencies = { 'nvim-lua/plenary.nvim' }
+		},
+
+		-- lazy git
+		{
+			"kdheepak/lazygit.nvim",
+			dependencies =  {
+					"nvim-telescope/telescope.nvim",
+					"nvim-lua/plenary.nvim"
 			},
 			config = function()
-				require("nvim-tree").setup {}
+					require("telescope").load_extension("lazygit")
+			end,
+	},
+
+    -- Терминал
+    {'akinsho/toggleterm.nvim', version = "*", config = true},
+
+		{
+			'nvim-treesitter/nvim-treesitter',
+			run = ':TSUpdate',
+			config = function()
+					require'nvim-treesitter.configs'.setup {
+							ensure_installed = {
+									"bash",
+									"css",
+									"dockerfile",
+									"html",
+									"javascript",
+									"json",
+									"json5",
+									"lua",
+									"vim",
+									"yaml",
+							},
+							sync_install = false,
+							auto_install = true,
+							highlight = {
+									enable = true,
+							},
+					}
 			end,
 		},
+		{ 'neovim/nvim-lspconfig' },
+
+		-- Autocomplete support
+		{ 'hrsh7th/cmp-nvim-lsp' },
+		{ 'hrsh7th/cmp-buffer' },
+		{ 'hrsh7th/cmp-path' },
+		{ 'hrsh7th/cmp-cmdline' },
+		{ 'hrsh7th/nvim-cmp' },
+		{ 'williamboman/mason.nvim' },
+
+		-- Автоматическое открытие фигурных скобок, кавычек и т.д
+		{ 'echasnovski/mini.nvim', version = false },
+		{ 'echasnovski/mini.move', version = false },
+		{ 'echasnovski/mini.pairs', version = false },
+		{ "windwp/nvim-autopairs" },
 })
