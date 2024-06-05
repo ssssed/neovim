@@ -104,4 +104,10 @@ require("lazy").setup({
 				"nvim-lua/plenary.nvim"
 			},
         },
+
+        -- Tab
+        { "akinsho/bufferline.nvim", dependencies = {'nvim-tree/nvim-web-devicons'} },
+
+        -- Comment
+        { 'numToStr/Comment.nvim', lazy = false }
 })

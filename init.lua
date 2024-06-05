@@ -13,4 +13,6 @@ require('plugins.lsp')
 require('plugins.cmp')
 require('plugins.mini')
 require('plugins.renamer')
+require('plugins.bufferline')
+require('plugins.comment')
 

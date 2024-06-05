@@ -15,4 +15,4 @@ vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
 vim.keymap.set('n', '<leader>E', ':NvimTreeFocus<CR>')
 
 -- ToggleTerm
-vim.keymap.set('n', '<leader>j>', ':ToggleTerm direction=float<CR>')
+vim.keymap.set('n', '<leader>j', ':ToggleTerm direction=float<CR>')
