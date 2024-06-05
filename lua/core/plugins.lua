@@ -109,5 +109,32 @@ require("lazy").setup({
         { "akinsho/bufferline.nvim", dependencies = {'nvim-tree/nvim-web-devicons'} },
 
         -- Comment
-        { 'numToStr/Comment.nvim', lazy = false }
+        { 'numToStr/Comment.nvim', lazy = false },
+
+        -- git signs
+        { 'lewis6991/gitsigns.nvim' },
+
+        -- meason
+        { 'williamboman/mason.nvim' },
+
+        -- todo syntax highlight
+        {
+	        "folke/todo-comments.nvim",
+	        dependencies = { "nvim-lua/plenary.nvim" },
+	        opts = {
+	            -- your configuration comes here
+	            -- or leave it empty to use the default settings
+	            -- refer to the configuration section below
+	        }
+	    },
+
+        -- подсказка аргументов и их типов
+        { "folke/neodev.nvim", opts = {} },
+
+        -- показ всех ошибок в проекте
+        {
+	        "folke/trouble.nvim",
+	        dependencies = { "nvim-tree/nvim-web-devicons" },
+	        opts = {},
+	    },
 })

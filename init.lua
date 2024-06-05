@@ -15,4 +15,8 @@ require('plugins.mini')
 require('plugins.renamer')
 require('plugins.bufferline')
 require('plugins.comment')
+require('plugins.gitsigns')
+require('plugins.meason')
+require('plugins.todo')
+require('plugins.trouble')
 
