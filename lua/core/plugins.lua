@@ -97,4 +97,11 @@ require("lazy").setup({
 		{ 'echasnovski/mini.move', version = false },
 		{ 'echasnovski/mini.pairs', version = false },
 		{ "windwp/nvim-autopairs" },
+
+        -- Renamer
+        { 'filipdutescu/renamer.nvim',
+			dependencies = {
+				"nvim-lua/plenary.nvim"
+			},
+        },
 })
