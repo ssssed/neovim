@@ -137,4 +137,8 @@ require("lazy").setup({
 	        dependencies = { "nvim-tree/nvim-web-devicons" },
 	        opts = {},
 	    },
+
+        -- Автосейв
+        {"Pocco81/auto-save.nvim"},
+
 })

@@ -19,4 +19,5 @@ require('plugins.gitsigns')
 require('plugins.meason')
 require('plugins.todo')
 require('plugins.trouble')
+require('plugins.auto-save')
 
