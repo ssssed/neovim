@@ -10,7 +10,7 @@ require("neo-tree").setup {
                 nowait = true,
              },
             mappings = {
-			    ["<F5>"] = "refresh",
+			          ["<F5>"] = "refresh",
                 ["p"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
                 ["o"] = { command = "open", nowait = true },
             }

@@ -20,4 +20,5 @@ require('plugins.meason')
 require('plugins.todo')
 require('plugins.trouble')
 require('plugins.auto-save')
+require('plugins.lualine')
 

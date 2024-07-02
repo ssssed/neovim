@@ -140,5 +140,18 @@ require("lazy").setup({
 
         -- Автосейв
         {"Pocco81/auto-save.nvim"},
+        
+        -- Snippets
+        {
+            "L3MON4D3/LuaSnip",
+	        version = "v2.*",
+            build = "make install_jsregexp",
+            dependencies = { "rafamadriz/friendly-snippets" },
+        },
 
+        -- Status bar
+        {
+            'nvim-lualine/lualine.nvim',
+            dependencies = { 'nvim-tree/nvim-web-devicons', "tinted-theming/base16-vim" }
+        }
 })
