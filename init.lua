@@ -1,24 +1,18 @@
--- Basic
-require('core.plugins')
-require('core.mappings')
-require('core.theme')
-require('core.configs')
+require('base')
+require('highlights')
+require('maps')
+require('plugins')
 
--- Plugins
-require('plugins.neo-tree')
-require('plugins.telescope')
-require('plugins.toggle-term')
-require('plugins.treesiter')
-require('plugins.lsp')
-require('plugins.cmp')
-require('plugins.mini')
-require('plugins.renamer')
-require('plugins.bufferline')
-require('plugins.comment')
-require('plugins.gitsigns')
-require('plugins.meason')
-require('plugins.todo')
-require('plugins.trouble')
-require('plugins.auto-save')
-require('plugins.lualine')
+local has = function(x)
+  return vim.fn.has(x) == 1
+end
 
+local is_mac = has "macunix"
+local is_win = has "win32"
+
+if is_mac then
+  require('macos')
+end
+if is_win then
+  require('windows')
+end
