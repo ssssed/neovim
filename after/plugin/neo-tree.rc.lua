@@ -22,4 +22,4 @@ neotree.setup {
   }
 }
 
-vim.keymap.set('n', '<Space>e', ':Neotree float toggle<CR>')
+vim.keymap.set('n', ';;', ':Neotree float toggle<CR>')
