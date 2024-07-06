@@ -2,7 +2,7 @@ local status, autosave = pcall(require, 'auto-save')
 if (not status) then return end
 
 autosave.setup({
-  enable = false,
+  enable = true,
   trigger_events = { 'BufWinLeave' },
   write_all_buffers = true,
 })
