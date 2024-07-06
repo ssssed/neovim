@@ -22,6 +22,9 @@ nvim_lsp.tsserver.setup {
   cmd = { "typescript-language-server", "--stdio" }
 }
 
+-- Html config
+nvim_lsp.html.setup {}
+
 -- Lua config
 nvim_lsp.sumneko_lua.setup {
   on_attach = on_attach,

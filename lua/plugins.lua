@@ -60,4 +60,10 @@ packer.startup(function(use)
 
   -- Autosave
   use 'Pocco81/auto-save.nvim'
+
+  -- Comment
+  use 'numToStr/Comment.nvim'
+
+  -- Todo highlights
+  use 'folke/todo-comments.nvim'
 end)
