@@ -37,5 +37,6 @@ keymap.set('n', '<C-w><up>', '<C-w>+')
 keymap.set('n', '<C-w><down>', '<C-w>-')
 
 -- Saving a file
-vim.keymap.set('n', '<Space>w', ':w<CR>')
-vim.keymap.set('i', '<Space>w', '<Esc>:w<CR>')
+vim.keymap.set('n', '<Space>lf', '<cmd>lua vim.lsp.buf.format()<CR>')
+vim.keymap.set('n', '<Space>w', '<cmd>lua vim.lsp.buf.format()<CR>:w<CR>', { noremap = true, silent = true })
+vim.keymap.set('i', '<Space>w', '<Esc>lua vim.lsp.buf.format()<CR>:w<CR>', { noremap = true, silent = true })
