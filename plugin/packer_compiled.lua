@@ -214,6 +214,11 @@ _G.packer_plugins = {
     path = "/Users/sed/.local/share/nvim/site/pack/packer/start/todo-comments.nvim",
     url = "https://github.com/folke/todo-comments.nvim"
   },
+  ["toggleterm.nvim"] = {
+    loaded = true,
+    path = "/Users/sed/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
+    url = "https://github.com/akinsho/toggleterm.nvim"
+  },
   ["transparent.nvim"] = {
     loaded = true,
     path = "/Users/sed/.local/share/nvim/site/pack/packer/start/transparent.nvim",

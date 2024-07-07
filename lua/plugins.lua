@@ -66,4 +66,10 @@ packer.startup(function(use)
 
   -- Todo highlights
   use 'folke/todo-comments.nvim'
+
+  -- Terminal
+  use 'akinsho/toggleterm.nvim'
+
+  -- Lazygit
+  use 'kdheepak/lazygit.nvim'
 end)
