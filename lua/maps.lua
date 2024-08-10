@@ -20,7 +20,7 @@ keymap.set('n', 'sv', ':vsplit<Return><C-w>w ', { silent = true })
 
 
 -- Move window
-keymap.set('n', '<Space>', '<C-w>w')
+keymap.set('n', 'sw', '<C-w>w')
 keymap.set('', 's<left>', '<C-w>h')
 keymap.set('', 's<up>', '<C-w>k')
 keymap.set('', 's<down>', '<C-w>j')
@@ -39,4 +39,3 @@ keymap.set('n', '<C-w><down>', '<C-w>-')
 -- Saving a file
 vim.keymap.set('n', '<Space>lf', '<cmd>lua vim.lsp.buf.format()<CR>')
 vim.keymap.set('n', '<Space>w', '<cmd>lua vim.lsp.buf.format()<CR>:w<CR>', { noremap = true, silent = true })
-vim.keymap.set('i', '<Space>w', '<Esc>lua vim.lsp.buf.format()<CR>:w<CR>', { noremap = true, silent = true })

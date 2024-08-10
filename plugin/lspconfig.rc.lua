@@ -25,6 +25,12 @@ nvim_lsp.tsserver.setup {
 -- Html config
 nvim_lsp.html.setup {}
 
+-- Css config
+nvim_lsp.cssls.setup {}
+
+-- Css modules
+nvim_lsp.cssmodules_ls.setup {}
+
 -- Lua config
 nvim_lsp.sumneko_lua.setup {
   on_attach = on_attach,
