@@ -13,7 +13,4 @@ ts.setup {
   ensure_installed = {
     'tsx', 'lua', 'json', 'css'
   },
-  autotag = {
-    enable = true,
-  }
 }

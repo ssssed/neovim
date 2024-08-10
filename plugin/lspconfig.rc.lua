@@ -3,47 +3,43 @@ if (not status) then
   return
 end
 
-local protocol = require('vim.lsp.protocol')
-
-local on_attach = function(client, bufnr)
-  -- enabled auto-formatting
-  -- if client.server_capabilities.documentFormattingProvider then
-  -- vim.api.nvim_command [[augroup Format]]
-  --vim.api.nvim_command [[autocmd! * <buffer>]]
-  --   vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
-  -- vim.api.nvim_command [[augroup END]]
-  -- end
-end
-
--- Typescript config
-nvim_lsp.tsserver.setup {
-  on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact" },
-  cmd = { "typescript-language-server", "--stdio" }
-}
-
--- Html config
-nvim_lsp.html.setup {}
-
--- Css config
-nvim_lsp.cssls.setup {}
-
--- Css modules
-nvim_lsp.cssmodules_ls.setup {}
-
 -- Lua config
-nvim_lsp.sumneko_lua.setup {
-  on_attach = on_attach,
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim' }
-      },
+nvim_lsp.lua_ls.setup {
+  on_init = function(client)
+    local path = client.workspace_folders[1].name
+    if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
+      return
+    end
 
+    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+      runtime = {
+        version = 'LuaJIT'
+      },
       workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
-        checkThirdParty = false
+        checkThirdParty = false,
+        library = {
+          vim.env.VIMRUNTIME
+        }
       }
-    }
+    })
+  end,
+  settings = {
+    Lua = {}
   }
 }
+
+local lsp_servers = {
+  nvim_lsp.html,          -- support html language server
+  nvim_lsp.css_variables, -- support css variables
+  nvim_lsp.cssls,         -- support css language server
+  nvim_lsp.cssmodules_ls, -- support css modules
+  nvim_lsp.tailwindcss,   -- support tailwindcss
+  nvim_lsp.tsserver,      -- support typescript and javascript
+  nvim_lsp.yamlls,        -- support yaml language server
+  nvim_lsp.dockerls,      -- support dockerls
+  nvim_lsp.jsonls,        -- support json
+}
+
+for _, lsp_server in ipairs(lsp_servers) do
+  lsp_server.setup {}
+end
