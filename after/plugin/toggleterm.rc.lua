@@ -20,11 +20,28 @@ end
 local Terminal = require('toggleterm.terminal').Terminal
 local lazygit  = Terminal:new({ cmd = "lazygit", count = 5 })
 
+_G.side_term   = nil
+
+-- Функция для управления терминалом сбоку
+function _G.toggle_side_term()
+  if _G.side_term == nil then
+    -- Создаем новый терминал, если он еще не существует
+    _G.side_term = Terminal:new({
+      direction = "vertical",
+      size = 55,
+      hidden = true,
+    })
+  end
+  _G.side_term:toggle(55)
+end
+
 function _lazygit_toggle()
   lazygit:toggle()
 end
 
 vim.api.nvim_set_keymap("n", "<Space>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
-vim.keymap.set('n', 'tt', '<cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'tt', '<cmd>ToggleTerm direction=float name=float<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'tr', '<cmd>lua toggle_side_term()<CR>',
+  { noremap = true, silent = true })
 
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
