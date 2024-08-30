@@ -10,11 +10,21 @@ packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'hoob3rt/lualine.nvim' -- Status line
   use 'kyazdani42/nvim-web-devicons'
-  use 'L3MON4D3/LuaSnip'     -- Snippets
-  use 'onsails/lspkind-nvim' -- vscode autocomplete view
+  use { 'saadparwaiz1/cmp_luasnip' }
+  use {
+    'L3MON4D3/LuaSnip',
+    after = 'nvim-cmp',
+    config = function() require('config.snippets') end,
+    run = "make install_jsregexp"
+  }
+  use "rafamadriz/friendly-snippets" -- dependency snippets
+  use 'onsails/lspkind-nvim'         -- vscode autocomplete view
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/nvim-cmp'
+  use {
+    'hrsh7th/nvim-cmp',
+    config = function() require('config.cmp') end,
+  }
   use 'neovim/nvim-lspconfig' -- LSP
   use {
     'nvim-treesitter/nvim-treesitter',

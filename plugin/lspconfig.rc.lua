@@ -28,6 +28,8 @@ nvim_lsp.lua_ls.setup {
   }
 }
 
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 local lsp_servers = {
   nvim_lsp.html,          -- support html language server
   nvim_lsp.css_variables, -- support css variables
@@ -41,5 +43,7 @@ local lsp_servers = {
 }
 
 for _, lsp_server in ipairs(lsp_servers) do
-  lsp_server.setup {}
+  lsp_server.setup {
+    capabilities = lsp_capabilities,
+  }
 end
