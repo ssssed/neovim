@@ -34,7 +34,7 @@ local lsp_servers = {
   nvim_lsp.cssls,         -- support css language server
   nvim_lsp.cssmodules_ls, -- support css modules
   nvim_lsp.tailwindcss,   -- support tailwindcss
-  nvim_lsp.tsserver,      -- support typescript and javascript
+  nvim_lsp.ts_ls,         -- support typescript and javascript
   nvim_lsp.yamlls,        -- support yaml language server
   nvim_lsp.dockerls,      -- support dockerls
   nvim_lsp.jsonls,        -- support json

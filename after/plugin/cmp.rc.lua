@@ -1,13 +1,21 @@
-local status, cmp = pcall(require, "cmp")
-if (not status) then return end
+local status_cmp, cmp = pcall(require, "cmp")
+if not status_cmp then return end
 
-local lspkind = require 'lspkind'
+local status_lspkind, lspkind = pcall(require, "lspkind")
+if not status_lspkind then return end
+
+local status_luasnip, luasnip = pcall(require, "luasnip")
+if not status_luasnip then return end
+
+-- Загружаем дефолтные сниппеты из VS Code
+require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_lua").load({ paths = { "~/.config/nvim/snippets" } })
 
 cmp.setup({
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end
+      luasnip.lsp_expand(args.body) -- Поддержка сниппетов через LuaSnip
+    end,
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -17,11 +25,13 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
-      select = true
+      select = true,
     }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
       else
         fallback()
       end
@@ -29,6 +39,8 @@ cmp.setup({
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
       else
         fallback()
       end
@@ -36,10 +48,16 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'luasnip' }, -- Источник для LuaSnip
     { name = 'buffer' },
+    { name = 'path' },
   }),
   formatting = {
-    format = lspkind.cmp_format({ wirth_text = false, maxwidth = 50 })
+    format = lspkind.cmp_format({
+      mode = 'symbol_text',  -- Показывать иконки и текст
+      maxwidth = 50,
+      ellipsis_char = '...', -- Заменить слишком длинные строки "..."
+    })
   }
 })
 
