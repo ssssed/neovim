@@ -1,7 +1,18 @@
 local status, saga = pcall(require, 'lspsaga')
 if (not status) then return end
 
-saga.setup {}
+saga.setup {
+  lightbulb = {
+    enable = false,
+    sign = true,
+    virtual_text = false,
+    debounce = 10,
+    sign_priority = 20,
+  },
+  ui = {
+    code_action = "",
+  }
+}
 
 local opts = { noremap = true, silent = true }
 

@@ -3,11 +3,6 @@ local s = ls.snippet
 local i = ls.insert_node
 local t = ls.text_node
 
-local ls = require('luasnip')
-local s = ls.snippet
-local i = ls.insert_node
-local t = ls.text_node
-
 -- Сниппеты для JavaScript и TypeScript
 ls.add_snippets("javascript", {
   s("af", {
