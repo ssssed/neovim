@@ -60,6 +60,7 @@ packer.startup(function(use)
 
   -- Theme
   use 'gmr458/vscode_modern_theme.nvim'
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   -- Autosave
   use 'Pocco81/auto-save.nvim'

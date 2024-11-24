@@ -23,9 +23,10 @@ telescope.setup {
 
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set('n', 'ff', '<cmd>lua require("telescope.builtin").find_files({ no_ignore = true, hidden = true })<cr>',
+vim.keymap.set('n', '<Space>ff',
+  '<cmd>lua require("telescope.builtin").find_files({ no_ignore = true, hidden = true })<cr>',
   opts)
-vim.keymap.set('n', 'ft', '<cmd>lua require("telescope.builtin").live_grep()<cr>',
+vim.keymap.set('n', '<Space>ft', '<cmd>lua require("telescope.builtin").live_grep()<cr>',
   opts)
 vim.keymap.set('n', '////', '<cmd>lua require("telescope.builtin").buffers()<cr>',
   opts)

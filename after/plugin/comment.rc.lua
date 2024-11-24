@@ -3,10 +3,13 @@ if (not status) then return end
 
 comment.setup {
   toggler = {
-    line = 'cl',
-    block = 'cb'
+    line = '<C-l>',
+    block = '<C-b>',
   },
-  opleader = { line = 'cl', block = 'cb' },
+  opleader = {
+    line = '<C-l>',
+    block = '<C-b>',
+  },
   mappimgs = {
     basic = true,
     extra = false
