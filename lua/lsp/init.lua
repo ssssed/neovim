@@ -1,14 +1,20 @@
 local mason = require('mason')
 local mason_lspconfig = require('mason-lspconfig')
 
+local ok_cmp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+
 local M = {}
 
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities = vim.tbl_deep_extend(
+  'force',
+  vim.lsp.protocol.make_client_capabilities(),
+  ok_cmp and cmp_nvim_lsp.default_capabilities() or {}
+)
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local ok_cmp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-if ok_cmp then
-  M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
+-- Не все LSP-серверы поддерживают pull diagnostics (textDocument/diagnostic)
+if M.capabilities.textDocument and M.capabilities.textDocument.diagnostic then
+  M.capabilities.textDocument.diagnostic = nil
 end
 
 function M.on_attach(_, _) end
@@ -94,7 +100,35 @@ M.servers = {
     settings = {
       validate = 'on',
       codeActionOnSave = { enable = false, mode = 'all' },
-      experimental = { useFlatConfig = true },
+      experimental = {},
+    },
+    on_new_config = function(new_config, new_root_dir)
+      local flat = vim.fs.find({
+        'eslint.config.js', 'eslint.config.mjs', 'eslint.config.cjs',
+        'eslint.config.ts', 'eslint.config.mts', 'eslint.config.cts',
+      }, { path = new_root_dir, upward = true })[1]
+      local legacy = vim.fs.find({
+        '.eslintrc', '.eslintrc.js', '.eslintrc.cjs', '.eslintrc.yaml',
+        '.eslintrc.yml', '.eslintrc.json',
+      }, { path = new_root_dir, upward = true })[1]
+
+      new_config.settings.experimental = new_config.settings.experimental or {}
+      if flat then
+        new_config.settings.experimental.useFlatConfig = true
+      elseif legacy then
+        new_config.settings.experimental.useFlatConfig = false
+      end
+    end,
+    handlers = {
+      ['eslint/noConfig'] = function()
+        return {}
+      end,
+      ['eslint/probeFailed'] = function()
+        return {}
+      end,
+      ['eslint/noLibrary'] = function()
+        return {}
+      end,
     },
   },
 
