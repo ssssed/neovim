@@ -67,11 +67,3 @@ vim.api.nvim_create_autocmd('BufReadPost', {
     clear_overlays(args.buf)
   end,
 })
-
--- W в gutter — диагностика ESLint; счётчик остаётся в lualine
-vim.diagnostic.config({
-  signs = false,
-  virtual_text = false,
-  virtual_lines = false,
-  underline = true,
-})

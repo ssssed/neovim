@@ -19,6 +19,7 @@ wk.add({
   { '<Space>ft', desc = 'Live grep' },
   { '<Space>g', desc = 'LazyGit' },
   { '<Space>w', desc = 'Format & save' },
+  { '<Space>k', desc = 'Diagnostic line' },
   { '<Space>lf', desc = 'Format buffer' },
   { '<Space>c', desc = 'Close buffer' },
   { 'tt', desc = 'Float terminal' },
