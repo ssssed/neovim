@@ -50,16 +50,40 @@ local function clear_gitsigns_inline_diff(bufnr)
   end
 end
 
+local function eslint_fix_all(bufnr)
+  bufnr = bufnr or vim.api.nvim_get_current_buf()
+  local client = vim.lsp.get_clients({ bufnr = bufnr, name = 'eslint' })[1]
+  if not client then
+    return false
+  end
+
+  client:request_sync('workspace/executeCommand', {
+    command = 'eslint.applyAllFixes',
+    arguments = {
+      {
+        uri = vim.uri_from_bufnr(bufnr),
+        version = vim.lsp.util.buf_versions[bufnr],
+      },
+    },
+  }, 10000, bufnr)
+
+  return true
+end
+
 local function format_buffer()
+  local bufnr = vim.api.nvim_get_current_buf()
+  eslint_fix_all(bufnr)
+
   local formatted = vim.lsp.buf.format({
     async = false,
     timeout_ms = 10000,
+    bufnr = bufnr,
     filter = function(client)
       return client.name == 'eslint'
     end,
   })
   if not formatted then
-    vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+    vim.lsp.buf.format({ async = false, timeout_ms = 10000, bufnr = bufnr })
   end
 end
 

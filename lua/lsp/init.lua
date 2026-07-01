@@ -99,6 +99,7 @@ M.servers = {
   eslint = {
     settings = {
       validate = 'on',
+      format = true,
       codeActionOnSave = { enable = false, mode = 'all' },
       experimental = {},
     },
