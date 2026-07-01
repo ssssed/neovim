@@ -224,6 +224,11 @@ _G.packer_plugins = {
     path = "/Users/sssed/.local/share/nvim/site/pack/packer/start/prettier.nvim",
     url = "https://github.com/MunifTanjim/prettier.nvim"
   },
+  ["snacks.nvim"] = {
+    loaded = true,
+    path = "/Users/sssed/.local/share/nvim/site/pack/packer/start/snacks.nvim",
+    url = "https://github.com/folke/snacks.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/sssed/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -248,6 +253,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/sssed/.local/share/nvim/site/pack/packer/start/vscode_modern_theme.nvim",
     url = "https://github.com/gmr458/vscode_modern_theme.nvim"
+  },
+  ["which-key.nvim"] = {
+    loaded = true,
+    path = "/Users/sssed/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    url = "https://github.com/folke/which-key.nvim"
   }
 }
 

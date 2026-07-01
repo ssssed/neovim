@@ -8,6 +8,8 @@ vim.cmd [[packadd packer.nvim]]
 
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
+  use 'folke/snacks.nvim'
+  use 'folke/which-key.nvim'
   use 'hoob3rt/lualine.nvim' -- Status line
   use 'kyazdani42/nvim-web-devicons'
   use 'L3MON4D3/LuaSnip'     -- Snippets
