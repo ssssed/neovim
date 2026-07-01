@@ -24,8 +24,6 @@ packer.startup(function(use)
     run = ':TSUpdate'
   }
 
-  -- Formatter
-  use 'jose-elias-alvarez/null-ls.nvim'
   use 'MunifTanjim/prettier.nvim'
 
   -- Mason
@@ -38,7 +36,7 @@ packer.startup(function(use)
   use 'windwp/nvim-ts-autotag'
 
   -- Telescope
-  use 'nvim-lua/plenary.nvim' -- utils to telescope
+  use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
 
   -- Explorer

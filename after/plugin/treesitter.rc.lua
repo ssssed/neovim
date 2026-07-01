@@ -11,6 +11,7 @@ ts.setup {
     disable = {}
   },
   ensure_installed = {
-    'tsx', 'lua', 'json', 'css'
+    'javascript', 'typescript', 'tsx', 'html', 'css', 'scss',
+    'svelte', 'vue', 'lua', 'json',
   },
 }

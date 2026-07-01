@@ -5,11 +5,14 @@ prettier.setup {
   bin = 'prettierd',
   filetypes = {
     'css',
+    'scss', 'less', 'sass',
     'javascript',
     'javascriptreact',
     'typescript',
     'typescriptreact',
+    'html',
+    'vue',
+    'svelte',
     'json',
-    'scss', 'less', 'sass'
   }
 }
